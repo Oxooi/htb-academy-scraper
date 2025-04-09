@@ -1,0 +1,9 @@
+# The starting URL of the module you want to scrape
+url: "https://academy.hackthebox.com/module/xxx/section/xxx"
+
+# The file to temporarily store links (will be deleted after scraping)
+file: "links.txt"
+
+# Your HackTheBox Academy cookies (required for authentication)
+cookies:
+  _htba_session: "your_session_cookie_value"

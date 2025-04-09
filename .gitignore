@@ -1,0 +1,4 @@
+config/config.yaml
+results/*
+web_scraper.egg-info/
+build
