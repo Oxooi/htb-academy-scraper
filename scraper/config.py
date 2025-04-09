@@ -8,7 +8,7 @@ from typing import Dict, Optional
 from pathlib import Path
 from .utils import read_yaml_file, logger
 
-DEFAULT_CONFIG_PATH = Path("config/config.yaml")
+DEFAULT_CONFIG_PATH = Path("./config/config.yaml")
 
 
 class Config:

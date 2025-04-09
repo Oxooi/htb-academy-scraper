@@ -1,4 +1,8 @@
 config/config.yaml
 results/*
-web_scraper.egg-info/
+web_scraper.egg-info
 build
+/htb_academy_scraper.egg-info
+/scraper/__pycache__
+scraper/config/config.yaml
+scraper.log

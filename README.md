@@ -58,7 +58,7 @@ file: "links.txt"
 
 # Your HackTheBox Academy cookies (required for authentication)
 cookies:
-  _htba_session: "your_session_cookie_value"
+  htb_academy_session: "your_session_cookie_value"
 ```
 
 ### How to get your cookies
@@ -73,8 +73,14 @@ cookies:
 
 After installation, you can run the scraper using:
 
+### Linux
 ```bash
 htb-scraper
+```
+
+### Windows
+```bash
+python -m scraper
 ```
 
 The content will be saved in a `results` directory, organized by module title.

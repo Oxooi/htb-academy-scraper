@@ -6,4 +6,4 @@ file: "links.txt"
 
 # Your HackTheBox Academy cookies (required for authentication)
 cookies:
-  _htba_session: "your_session_cookie_value"
+  htb_academy_session: "your_session_cookie_value"
