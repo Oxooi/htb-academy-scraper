@@ -4,8 +4,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="htb-academy-scraper",
-    version="1.0.0",
+    name="HTB-AcadSaver",
+    version="1.2.0",
     packages=find_packages(),
     install_requires=[
         "beautifulsoup4>=4.9.0",

@@ -11,6 +11,8 @@ from pathlib import Path
 from .config import Config
 from .scraper import WebScraper, ContentScraper
 from .utils import logger
+import time
+import random
 
 
 def run():
@@ -55,6 +57,8 @@ def run():
             title, content = content_scraper.extract_content()
             if content:
                 content_scraper.save_content(title, content)
+            # Add seconds delay to avoid ban
+            time.sleep(1 + (2 * random.random()))  # Add a random delay between 1 and 3 seconds
 
         # Cleanup: remove temporary links file
         temp_file = Path(config.file)
