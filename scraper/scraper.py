@@ -193,6 +193,14 @@ class ContentScraper(WebScraper):
             # Initialize markdown content with title
             markdown = f"# {title}\n\n"
 
+            # Remove duplicate headings (often the first h1 is the same as title)
+            first_h1 = soup.find("h1")
+            if first_h1 and first_h1.get_text().strip() == title:
+                first_h1.decompose()
+
+            # Remove unwanted elemets (solutions, questions, forms etc...)
+            self._remove_unwanted_elements(soup)
+
             # Process all content elements
             for element in soup.find_all(
                 [
@@ -222,6 +230,33 @@ class ContentScraper(WebScraper):
         except Exception as e:
             logger.error(f"Error converting content to markdown: {e}")
             return content  # Return original content on error
+
+    def _remove_unwanted_elements(self, soup):
+        """Remove unwanted elements from the soup before processing."""
+        # Remove question sections
+        for element in soup.find_all(["div", "form"], class_=["card", "questionsDiv"]):
+            element.decompose()
+
+        # Remove buttons, inputs, form controls
+        for element in soup.find_all(["button", "input", "select"]):
+            element.decompose()
+
+        # Remove elements with specific IDs
+        for id_to_remove in [
+            "vpn-switch",
+            "screen",
+            "solutionsModuleSetting",
+            "statusText",
+        ]:
+            element = soup.find(id=id_to_remove)
+            if element:
+                element.decompose()
+
+        # Remove pwnbox elements
+        for element in soup.find_all(
+            class_=["pwnbox-select-card", "instanceStart", "instanceLoading"]
+        ):
+            element.decompose()
 
     def _process_element(self, element):
         """Process a single HTML element and return its markdown representation."""
